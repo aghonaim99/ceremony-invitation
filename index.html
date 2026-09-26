@@ -102,7 +102,7 @@
 			box-shadow: 0 18px 55px rgba(29, 5, 15, .3);
 			color: var(--ink);
 			opacity: 0;
-			transition: transform 1800ms cubic-bezier(.2,.75,.18,1), opacity 900ms ease;
+			transition: transform 3200ms cubic-bezier(.2,.75,.18,1), opacity 2400ms ease;
 		}
 
 		.paper-content {
@@ -224,7 +224,7 @@
 			z-index: 3;
 			inset: 2px;
 			background: var(--wine-light);
-			transition: transform 1700ms cubic-bezier(.22,.72,.17,1), opacity 1100ms ease;
+			transition: transform 20000ms cubic-bezier(.22,.72,.17,1), opacity 1600ms ease;
 			pointer-events: none;
 		}
 
@@ -272,7 +272,7 @@
 			box-shadow: 0 4px 15px rgba(35, 5, 14, .28), inset 0 0 0 4px rgba(76, 15, 33, .35);
 			color: #f0dca9;
 			font-size: 23px;
-			transition: opacity 700ms ease, transform 1300ms ease;
+			transition: opacity 2000ms ease, transform 40000ms ease;
 			pointer-events: none;
 		}
 
@@ -313,7 +313,7 @@
 			font-size: 12px;
 			white-space: normal;
 		}
-
+/*
 		.hint {
 			position: absolute;
 			z-index: 7;
@@ -322,13 +322,14 @@
 			width: 100%;
 			color: rgba(248, 234, 211, .83);
 			font-family: var(--sans);
-			font-size: 9px;
+			font-size: 20px;
 			letter-spacing: 2.5px;
 			text-align: center;
 			text-transform: uppercase;
 			transition: opacity 600ms ease;
 			pointer-events: none;
 		}
+*/
 
 		.scene.is-open .paper {
 			z-index: 2;
@@ -342,7 +343,7 @@
 		.scene.is-open .flap-right { transform: rotateY(145deg); opacity: .2; }
 		.scene.is-open .flap-bottom { transform: rotateX(-145deg); opacity: .2; }
 		.scene.is-open .seal { transform: translate(-50%, -50%) scale(.5); opacity: 0; }
-		.scene.is-open .hint { opacity: 0; }
+		/*.scene.is-open .hint { opacity: 0; }*/
 		@media (max-height: 680px) {
 			.paper { height: 76svh; min-height: 0; }
 			.invitation-label { margin: 12px 0; }
@@ -382,7 +383,7 @@
 			<div class="flap flap-top" aria-hidden="true"></div>
 			<div class="seal" aria-hidden="true"><img src="stamp6.png" alt=""></div>
 		</div>
-		<p class="hint" aria-hidden="true">An invitation awaits</p>
+		<!-- <p class="hint" aria-hidden="true">An invitation awaits</p> -->
 		<button class="open-button" id="openButton" type="button" aria-expanded="false" aria-controls="invitation">
 			<span>Open invitation</span>
 		</button>
@@ -393,19 +394,19 @@
 		const invitation = document.getElementById("invitation");
 
 		button.addEventListener("click", () => {
-			toggleInvitation();
+		openInvitation();
 		});
 
-		function toggleInvitation() {
-			const isOpen = scene.classList.toggle("is-open");
-			button.setAttribute("aria-expanded", String(isOpen));
-			button.querySelector("span").textContent = isOpen ? "Close invitation" : "Open invitation";
-			invitation.setAttribute("aria-hidden", String(!isOpen));
+		function openInvitation() {
+			scene.classList.add("is-open");
+			button.setAttribute("aria-expanded", "true");
+			button.querySelector("span").textContent = "Invitation opened";
+			invitation.setAttribute("aria-hidden", "false");
 		}
 
 		scene.addEventListener("click", (event) => {
 			if (event.target.closest("a, button")) return;
-			toggleInvitation();
+			openInvitation();
 		});
 	</script>
 </body>
