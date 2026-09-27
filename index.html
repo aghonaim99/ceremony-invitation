@@ -7,7 +7,7 @@
 	<title>Mohamed &amp; Bassma | Engagement Invitation</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
 	<style>
 		:root {
 			color-scheme: dark;
@@ -17,6 +17,7 @@
 			--gold: #d6bb83;
 			--paper: #f7f0e3;
 			--ink: #493342;
+			--flap-open-duration: 4000ms;
 			--serif: "Cormorant Garamond", "Times New Roman", serif;
 			--sans: "Montserrat", "Trebuchet MS", sans-serif;
 		}
@@ -138,35 +139,38 @@
 		}
 
 		h1 {
-			margin: 0;
+			margin-top: 5;
 			color: #6b293c;
-			font-size: clamp(48px, 13vw, 67px);
-			font-weight: 500;
+			font-family: "Vivaldi", "Great Vibes", var(--serif);
+			/* font-size: clamp(48px, 13vw, 67px); */
+			font-size: clamp(30px, 5vw, 67px);
+			font-style: italic;
+			font-weight: 1000;
 			line-height: .86;
 		}
 
 		h1 span { display: block; }
 
 		h1 .ampersand {
-			margin: 7px 0 5px;
+			/* margin: 7px 0 5px; */
 			color: #a98554;
-			font-size: 37px;
-			font-style: italic;
-			line-height: 1;
+			/* font-size: 37px; */
+			/* font-style: italic; */
+			/* line-height: 1; */
 		}
 
 		.invitation-copy {
 			max-width: 255px;
 			margin: 21px auto 20px;
 			color: #69585b;
-			font-size: 18px;
+			font-size: 13px;
 			line-height: 1.32;
 		}
 
 		.date {
-			margin: 0;
+			margin: 0.2;
 			color: #6b293c;
-			font-size: clamp(27px, 7vw, 34px);
+			font-size: clamp(20px, 3vw, 34px);
 			font-weight: 500;
 			line-height: 1;
 		}
@@ -219,13 +223,27 @@
 
 		.paper .bottom-ornament { margin-top: 20px; }
 
+		.couple-illustration {
+			display: block;
+			width: 150px;
+			max-height: 180px;
+			margin: 10px auto 0;
+			object-fit: contain;
+		}
+
+		.flap-group {
+			position: absolute;
+			z-index: 4;
+			inset: 0;
+			transition: opacity var(--flap-open-duration) ease-in-out;
+			pointer-events: none;
+		}
+
 		.flap {
 			position: absolute;
 			z-index: 3;
 			inset: 2px;
 			background: var(--wine-light);
-			transition: transform 20000ms cubic-bezier(.22,.72,.17,1), opacity 1600ms ease;
-			pointer-events: none;
 		}
 
 		.flap-top {
@@ -234,6 +252,7 @@
 			transform-origin: 50% 0;
 			background: linear-gradient(155deg, #87354b, #71223a 72%);
 			filter: drop-shadow(0 8px 7px rgba(44, 8, 20, .18));
+			transition: transform var(--flap-open-duration) ease-in-out;
 		}
 
 		.flap-left {
@@ -339,9 +358,9 @@
 		}
 
 		.scene.is-open .flap-top { transform: rotateX(178deg); }
-		.scene.is-open .flap-left { transform: rotateY(-145deg); opacity: .2; }
-		.scene.is-open .flap-right { transform: rotateY(145deg); opacity: .2; }
-		.scene.is-open .flap-bottom { transform: rotateX(-145deg); opacity: .2; }
+		.scene.is-open .flap-group {
+			opacity: 0;
+		}
 		.scene.is-open .seal { transform: translate(-50%, -50%) scale(.5); opacity: 0; }
 		/*.scene.is-open .hint { opacity: 0; }*/
 		@media (max-height: 680px) {
@@ -362,11 +381,12 @@
 		<div class="envelope">
 			<article class="paper" id="invitation" aria-hidden="true">
 				<div class="paper-content">
-					<div class="ornament" aria-hidden="true"><span>✦</span></div>
+					<!-- <div class="ornament" aria-hidden="true"><span>✦</span></div> -->
 					<p class="invitation-label">Together with their families</p>
-					<h1><span>Mohamed</span><span class="ampersand">&amp;</span><span>Bassma</span></h1>
+					<img class="couple-illustration" src="assets/chars2.png" alt="Illustration of the couple">
+					<h1><span><span">Mohamed</span><span class="ampersand">&amp;</span><span>Bassma</span></span></h1>
 					<p class="invitation-copy">joyfully invite you to celebrate their engagement</p>
-					<div class="ornament" aria-hidden="true"><span>❧</span></div>
+					<div class="ornament" aria-hidden="true"><span>♥</span></div>
 					<p class="date">October 8th, 2026</p>
 					<p class="venue">Dar Al Deyafa</p>
 					<p class="city">Nasr City</p>
@@ -374,12 +394,14 @@
 						<span class="map-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></svg></span>
 						<span>View location</span>
 					</a>
-					<div class="ornament bottom-ornament" aria-hidden="true"><span>✦</span></div>
+					<!-- <div class="ornament bottom-ornament" aria-hidden="true"><span>♥</span></div> -->
 				</div>
 			</article>
-			<div class="flap flap-left" aria-hidden="true"></div>
-			<div class="flap flap-right" aria-hidden="true"></div>
-			<div class="flap flap-bottom" aria-hidden="true"></div>
+			<div class="flap-group" aria-hidden="true">
+				<div class="flap flap-left"></div>
+				<div class="flap flap-right"></div>
+				<div class="flap flap-bottom"></div>
+			</div>
 			<div class="flap flap-top" aria-hidden="true"></div>
 			<div class="seal" aria-hidden="true"><img src="assets/stamp6.png" alt=""></div>
 		</div>
