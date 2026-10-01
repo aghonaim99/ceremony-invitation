@@ -178,19 +178,19 @@
 		.venue {
 			margin: 12px 0 0;
 			color: #69585b;
-			font-size: 19px;
+			font-size: 20px;
 			line-height: 1.15;
 		}
 
 		.hall {
 			margin: 0 0 0;
 			color: #69585b;
-			font-size: 17px;
+			font-size: 19px;
 			line-height: 1.15;
 		}
 
 		.city {
-			margin: 5px 0 0;
+			margin: 10px 0 0;
 			color: #806b5c;
 			font-family: var(--sans);
 			font-size: 9px;
@@ -375,6 +375,65 @@
 			.invitation-label { margin: 12px 0; }
 			.invitation-copy { margin: 14px auto; font-size: 16px; }
 			.paper .bottom-ornament { margin-top: 14px; }
+		}
+
+		@media (max-width: 480px) {
+			.paper {
+				width: min(83vw, 320px);
+				height: min(68svh, 465px);
+				min-height: 360px;
+				padding: 18px 16px 14px;
+				transform: translate(-50%, -50%) scale(.94);
+			}
+
+			.scene.is-open .paper {
+				transform: translate(-50%, -50%) scale(1.03);
+			}
+
+			.paper-content {
+				max-width: 100%;
+				transform: scale(.75);
+				transform-origin: center top;
+			}
+
+			.couple-illustration {
+				width: 118px;
+				margin-top: 4px;
+			}
+
+			.invitation-label {
+				margin: 10px 0 12px;
+				font-size: 8px;
+				letter-spacing: 2.2px;
+			}
+
+			h1 {
+				font-size: clamp(28px, 9vw, 46px);
+			}
+
+			.invitation-copy {
+				max-width: 210px;
+				margin: 12px auto 14px;
+				font-size: 12px;
+			}
+
+			.ornament::before, .ornament::after { width: 62px; }
+
+			.date {
+				font-size: clamp(20px, 6vw, 28px);
+			}
+
+			.venue { font-size: 17px; }
+			.hall { font-size: 15px; }
+			.city {
+				font-size: 8px;
+				letter-spacing: 1.8px;
+			}
+
+			.map-link {
+				margin-top: 10px;
+				font-size: 8px;
+			}
 		}
 
 		@media (prefers-reduced-motion: reduce) {
